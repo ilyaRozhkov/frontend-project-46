@@ -41,5 +41,3 @@ To select the output format:
 ```
 gendiff --format plain <path to file1> <path to file2>
 ```
-
-### Examples
