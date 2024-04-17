@@ -17,18 +17,18 @@ const plain = (data) => {
     const values = Object.values(obj);
     const strings = values.flatMap((node) => {
       const {
-        key, firstValue, secondValue, type,
+        key, oldValue, value, type,
       } = node;
       const newPath = path === '' ? `${key}` : `${path}.${key}`;
       switch (type) {
         case 'added':
-          return `Property '${newPath}' was added with value: ${stringify(secondValue)}`;
+          return `Property '${newPath}' was added with value: ${stringify(value)}`;
         case 'deleted':
           return `Property '${newPath}' was removed`;
         case 'changed':
-          return `Property '${newPath}' was updated. From ${stringify(firstValue)} to ${stringify(secondValue)}`;
+          return `Property '${newPath}' was updated. From ${stringify(oldValue)} to ${stringify(value)}`;
         case 'hasChild':
-          return iter(secondValue, newPath);
+          return iter(value, newPath);
         case 'unchanged':
           return [];
         default:
