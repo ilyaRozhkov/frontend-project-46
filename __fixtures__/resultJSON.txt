@@ -19,7 +19,7 @@
    },
    {
     "key": "setting3",
-    "oldValue": true,
+    "firstValue": true,
     "value": null,
     "type": "changed"
    },
@@ -43,7 +43,7 @@
       "value": [
        {
         "key": "wow",
-        "oldValue": "",
+        "firstValue": "",
         "value": "so much",
         "type": "changed"
        }
@@ -71,7 +71,7 @@
   "value": [
    {
     "key": "baz",
-    "oldValue": "bas",
+    "firstValue": "bas",
     "value": "bars",
     "type": "changed"
    },
@@ -82,7 +82,7 @@
    },
    {
     "key": "nest",
-    "oldValue": {
+    "firstValue": {
      "key": "value"
     },
     "value": "str",
