@@ -14,7 +14,7 @@ const buildDiff = (obj1, obj2) => {
       return { key, value: value1, type: 'deleted' };
     }
 
-    if (value1 === value2) {
+    if (_.isEqual(value1, value2)) {
       return { key, value: value1, type: 'unchanged' };
     }
 
@@ -23,8 +23,8 @@ const buildDiff = (obj1, obj2) => {
     }
     return {
       key,
-      oldValue: value1,
-      value: value2,
+      firstValue: value1,
+      secondValue: value2,
       type: 'changed',
     };
   });
