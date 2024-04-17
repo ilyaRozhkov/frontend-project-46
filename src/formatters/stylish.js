@@ -18,19 +18,19 @@ const stylish = (data) => {
     const currentReplacer = replacer.repeat(depth);
     const result = obj.flatMap((node) => {
       const {
-        key, oldValue, value, type,
+        key, firstValue, secondValue, type,
       } = node;
       switch (type) {
         case 'added':
-          return `${currentReplacer}  + ${key}: ${stringify(value, depth + 1)}`;
+          return `${currentReplacer}  + ${key}: ${stringify(secondValue, depth + 1)}`;
         case 'deleted':
-          return `${currentReplacer}  - ${key}: ${stringify(value, depth + 1)}`;
+          return `${currentReplacer}  - ${key}: ${stringify(secondValue, depth + 1)}`;
         case 'unchanged':
-          return `${currentReplacer}    ${key}: ${stringify(value, depth + 1)}`;
+          return `${currentReplacer}    ${key}: ${stringify(secondValue, depth + 1)}`;
         case 'changed':
-          return `${currentReplacer}  - ${key}: ${stringify(oldValue, depth + 1)}\n${currentReplacer}  + ${key}: ${stringify(value, depth + 1)}`;
+          return `${currentReplacer}  - ${key}: ${stringify(firstValue, depth + 1)}\n${currentReplacer}  + ${key}: ${stringify(secondValue, depth + 1)}`;
         case 'hasChild':
-          return `${currentReplacer}    ${key}: ${iter(value, depth + 1)}`;
+          return `${currentReplacer}    ${key}: ${iter(secondValue, depth + 1)}`;
         default:
           throw new Error('something wrong');
       }
