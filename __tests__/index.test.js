@@ -14,7 +14,7 @@ test('main func JSON', () => {
   const file2 = getFixturePath('file2.json');
   const expected = readFile('resultTree.txt');
 
-  expect(genDiff(file1, file2)).toEqual(expected);
+  expected(genDiff(file1, file2)).toEqual(expected);
 });
 
 test('main func YML', () => {
@@ -22,7 +22,7 @@ test('main func YML', () => {
   const file2 = getFixturePath('file2.yml');
   const expected = readFile('resultTree.txt');
 
-  expect(genDiff(file1, file2)).toEqual(expected);
+  expected(genDiff(file1, file2)).toEqual(expected);
 });
 
 test('Plain gendiff', () => {
@@ -30,7 +30,7 @@ test('Plain gendiff', () => {
   const file2 = getFixturePath('file2.json');
   const expected = readFile('resultPlain.txt');
 
-  expect(genDiff(file1, file2, 'plain')).toEqual(expected);
+  expected(genDiff(file1, file2, 'plain')).toEqual(expected);
 });
 
 test('JSON gendiff', () => {
@@ -38,5 +38,5 @@ test('JSON gendiff', () => {
   const file2 = getFixturePath('file2.json');
   const expected = readFile('resultJSON.txt');
 
-  expect(genDiff(file1, file2, 'json')).toEqual(expected);
+  expected(genDiff(file1, file2, 'json')).toEqual(expected);
 });
