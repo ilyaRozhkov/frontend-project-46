@@ -35,9 +35,10 @@ const stylish = (data) => {
           throw new Error('something wrong');
       }
     });
+      consolt.log('result', result)
     return `{\n${result.join('\n')}\n${currentReplacer}}`;
   };
-  consolt.log('data', data)
+
   return iter(data, 0);
 };
 
