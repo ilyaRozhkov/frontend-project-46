@@ -27,6 +27,6 @@ test.each(formats)('%s', (format) => {
   const fileName1 = getFixturePath(`file1.${format}`);
   const fileName2 = getFixturePath(`file2.${format}`);
   const result = genDiff(fileName1, fileName2, 'json');
-  // console.log(result);
+  console.log('result => ', result);
   expect(result).toEqual(resultJson);
 });
