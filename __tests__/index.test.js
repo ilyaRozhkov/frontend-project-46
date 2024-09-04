@@ -7,18 +7,16 @@ import genDiff from '../src/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const formats = ['json'];
-
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFixtureFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
 const resultJson = readFixtureFile('resultJSON.txt');
 
-test.each(formats)('%s', (format) => {
-  // console.log(format);
-  const fileName1 = getFixturePath(`file1.${format}`);
-  const fileName2 = getFixturePath(`file2.${format}`);
-  const result = genDiff(fileName1, fileName2, 'json');
+test('main func JSON', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const expected = readFixtureFile('resultTree.txt');
+  const result = genDiff(file1, file2);
   console.log('resultJson => ', resultJson);
   console.log('result =>', result);
-  expect(result).toEqual(resultJson);
+  expect(genDiff(file1, file2)).toEqual(expected);
 });
