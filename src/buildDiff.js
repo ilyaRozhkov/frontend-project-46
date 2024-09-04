@@ -28,7 +28,7 @@ const buildDiff = (obj1, obj2) => {
       type: 'changed',
     };
   });
-  console.log('resultObj', resultObj);
+
   return resultObj;
 };
 export default buildDiff;
