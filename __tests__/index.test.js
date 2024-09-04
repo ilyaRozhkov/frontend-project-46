@@ -1,32 +1,42 @@
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
-
 import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const formats = ['json'];
-
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFixtureFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
-const resultJson = readFixtureFile('resultJSON.txt');
-console.log(resultJson);
-/* const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`; */
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-test.each(formats)('%s', (format) => {
-  // console.log(format);
-  const fileName1 = getFixturePath(`file1.${format}`);
-  const fileName2 = getFixturePath(`file2.${format}`);
-  const result = genDiff(fileName1, fileName2, 'json');
-  console.log('result => ', result);
-  expect(result).toEqual(resultJson);
+test('main func JSON', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const expected = readFile('resultTree.txt');
+
+  expect(genDiff(file1, file2)).toEqual(expected);
+});
+
+test('main func YML', () => {
+  const file1 = getFixturePath('file1.yml');
+  const file2 = getFixturePath('file2.yml');
+  const expected = readFile('resultTree.txt');
+
+  expect(genDiff(file1, file2)).toEqual(expected);
+});
+
+test('Plain gendiff', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const expected = readFile('resultPlain.txt');
+
+  expect(genDiff(file1, file2, 'plain')).toEqual(expected);
+});
+
+test('JSON gendiff', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const expected = readFile('resultJSON.txt');
+
+  expect(genDiff(file1, file2, 'json')).toEqual(expected);
 });
