@@ -37,6 +37,7 @@ const stylish = (data) => {
     });
     return `{\n${result.join('\n')}\n${currentReplacer}}`;
   };
+  consolt.log('data', data)
   return iter(data, 0);
 };
 
