@@ -35,7 +35,7 @@ const stylish = (data) => {
           throw new Error('something wrong');
       }
     });
-      console.log('result', result)
+    console.log('result', result);
     return `{\n${result.join('\n')}\n${currentReplacer}}`;
   };
 
