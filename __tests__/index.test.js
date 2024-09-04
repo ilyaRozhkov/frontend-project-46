@@ -12,7 +12,7 @@ const formats = ['json'];
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFixtureFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
 const resultJson = readFixtureFile('resultJSON.txt');
-//console.log(resultJson);
+console.log(resultJson);
 /* const expected = `{
   - follow: false
     host: hexlet.io
@@ -24,9 +24,9 @@ const resultJson = readFixtureFile('resultJSON.txt');
 
 test.each(formats)('%s', (format) => {
   // console.log(format);
-  const file1 = getFixturePath('file1.json');
-  const file2 = getFixturePath('file2.json');
-  const result = genDiff(file1, file1, 'json');
+  const fileName1 = getFixturePath(`file1.${format}`);
+  const fileName2 = getFixturePath(`file2.${format}`);
+  const result = genDiff(fileName1, fileName2, 'json');
   // console.log(result);
   expect(result).toEqual(resultJson);
 });
