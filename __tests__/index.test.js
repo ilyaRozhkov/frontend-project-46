@@ -13,13 +13,12 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFixtureFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
 const resultJson = readFixtureFile('resultJSON.txt');
 
-
 test.each(formats)('%s', (format) => {
   // console.log(format);
   const fileName1 = getFixturePath(`file1.${format}`);
   const fileName2 = getFixturePath(`file2.${format}`);
   const result = genDiff(fileName1, fileName2, 'json');
-  console.log('resultJson => ',resultJson);
+  console.log('resultJson => ', resultJson);
   console.log('result =>', result);
   expect(result).toEqual(resultJson);
 });
