@@ -16,6 +16,7 @@ program
       console.log(diff);
     } catch (error) {
       console.error('Error!!!:', error.message);
+            process.exit();
     }
   });
 
