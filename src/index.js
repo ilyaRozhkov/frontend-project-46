@@ -12,6 +12,7 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const parsedData2 = parser(content2);
 
    const diff = findDiff(parsedData1, parsedData2);
+   console.log('diff', diff)
    const format = selectFormat(formatName);
 
    return format(diff);
