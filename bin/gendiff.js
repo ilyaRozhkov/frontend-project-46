@@ -19,7 +19,6 @@ program
         console.log(result);
     } catch(error) {
         console.error('error: ', error.message);
-        process.exit(1);
     }
 
 })
