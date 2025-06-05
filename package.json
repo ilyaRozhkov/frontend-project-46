@@ -1,29 +1,36 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/RomashNat/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/RomashNat/frontend-project-46/actions)",
-  "main": "bin/gendiff.js",
-  "scripts": {
-    "test": "jest --coverage",
-    "lint": "eslint ."
-  },
+  "type": "module",
+  "description": "[![Actions Status](https://github.com/KateChe31/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/KateChe31/frontend-project-46/actions)",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "keywords": [],
-  "type": "module",
-  "author": "RomashNat",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npx jest",
+    "lint": "eslint ."
+   },
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^13.1.0",
+    "@hexlet/immutable-fs-trees": "^0.7.2",
+    "commander": "^12.1.0",
     "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
-    "eslint": "^9.27.0",
-    "eslint-plugin-jest": "^28.11.0",
-    "globals": "^16.1.0",
+    "@eslint/create-config": "^1.0.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.12.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "globals": "^15.10.0",
     "jest": "^29.7.0"
   }
 }

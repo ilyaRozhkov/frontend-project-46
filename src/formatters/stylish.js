@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
-const buildIndent = (depth) => '    '.repeat(depth); //не совсем понял зачем ты переусложнила getIdent, заведя 2 переменные которые не меняются (replacer и spacesCount) 
+const buildIndent = (depth) => '    '.repeat(depth);
 
-const stringify = (value, depth) => {//Упрощение функции и вынесение составления строки в метод map
+const stringify = (value, depth) => {
   if (!_.isPlainObject(value)) {
     if (value === null) return 'null';
     if (typeof value === 'boolean') return String(value);
@@ -39,7 +39,8 @@ const formatStylish = (diff, depth = 0) => {
         throw new Error(`Unknown node type: ${node.type}`);
     }
   });
-  return depth === 0 ? `{\n${lines.flat().join('\n')}\n}` : lines.flat().join('\n'); // слишком сильно углубилась в рекурсию, можно сделать проще
+
+  return depth === 0 ? `{\n${lines.flat().join('\n')}\n}` : lines.flat().join('\n');
 };
 
 export default formatStylish;

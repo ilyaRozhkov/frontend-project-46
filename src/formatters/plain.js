@@ -1,25 +1,25 @@
 import _ from 'lodash';
 
-const complexValue = (value) => {
-  if (_.isObject(value) || _.isArray(value)) {
+const formatValue = (value) => {
+  if (_.isObject(value)) {
     return '[complex value]';
   }
   if (typeof value === 'string') {
     return `'${value}'`;
   }
-  return String(value);//забыла учесть что могут быть данные типа number
+  return String(value);
 };
-//функция outPutFormat не нужна
+
 const buildPlainLines = (diff, parentPath = '') => diff.flatMap((node) => {
   const currentPath = parentPath ? `${parentPath}.${node.key}` : node.key;
 
   switch (node.type) {
     case 'added':
-      return `Property '${currentPath}' was added with value: ${complexValue(node.value)}`;
+      return `Property '${currentPath}' was added with value: ${formatValue(node.value)}`;
     case 'removed':
       return `Property '${currentPath}' was removed`;
     case 'changed':
-      return `Property '${currentPath}' was updated. From ${complexValue(node.value1)} to ${complexValue(node.value2)}`;
+      return `Property '${currentPath}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`;
     case 'nested':
       return buildPlainLines(node.children, currentPath);
     case 'unchanged':

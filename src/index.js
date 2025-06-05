@@ -1,26 +1,18 @@
-import fs from 'fs';
-import { resolve }  from 'path';
-import parser from './parser.js';
-import selectFormat from './formatters/format.js';
-import findDiff from './findDiff.js';
+import { resolve } from 'path';
+import parseFile from './parsers.js';
+import getFormatter from './formatters/index.js';
+import buildDiff from './buildDiff.js';
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
-  const content1 = resolve(process.cwd(), filepath1);
-  const content2 = resolve(process.cwd(), filepath2);
+  const absolutePath1 = resolve(process.cwd(), filepath1);
+  const absolutePath2 = resolve(process.cwd(), filepath2);
 
-  const parsedData1 = parser(content1);
-  const parsedData2 = parser(content2);
+  const data1 = parseFile(absolutePath1);
+  const data2 = parseFile(absolutePath2);
 
-   const diff = findDiff(parsedData1, parsedData2);
-   const format = selectFormat(formatName);
-
-   return format(diff);
-   
+  const diff = buildDiff(data1, data2);
+  const format = getFormatter(formatName);
+  return format(diff);
 };
 
 export default genDiff;
-
-
-
-
-
