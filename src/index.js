@@ -15,4 +15,4 @@ const genDiff = (filepath1, filepath2, format = 'stylish') => {
   return makeFormat(dataComparison, format)
 }
 
-export { genDiff }
+export default genDiff
