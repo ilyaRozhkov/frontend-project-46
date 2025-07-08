@@ -1,0 +1,4 @@
+timeout: 110
+verbose: false
+host: hexlet.io
+follow: false
