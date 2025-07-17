@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander'
+import { program } from 'commander'
 import genDiff from '../src/parser.js'
 
-const program = new Command()
+
 
 program
-  .description('Compares two configuration files and shows a difference.')
+  .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
-  .version('0.0.1', '-V, --version ', 'output the version number')
-  .option('-f, --format [type]', 'output format', 'stylish')
-  .action ((a, b, option) => {
-    console.log (genDiff(a, b, option.format))
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'output format', 'stylish') // Дефолтный формат – 4 параметр
+  .action((path1, path2) => { // Код вызова внутри action
+    // Вывод на экран происходит здесь, а не внутри библиотеки
+    console.log(genDiff(path1, path2, program.opts().format))
   })
+  .parse(process.argv)
 
-program.parse(process.argv)
