@@ -18,4 +18,3 @@ const parser = (a, b, format = 'stylish') => {
 }
 export default parser
 
-console.log(parser('__fixtures__/file3.yaml', '__fixtures__/file4.yaml', '-f plain'))
