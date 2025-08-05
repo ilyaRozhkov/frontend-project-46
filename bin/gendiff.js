@@ -2,16 +2,13 @@
 import { Command } from 'commander';
 import genDiff from '../src/index.js';
 
-const program = new Command();
-
 program
-  .description('Compares two configuration files and shows a difference.')
-  .helpOption('-h, --help', 'output usage information')
+  .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
-  .option('-V, --version', 'output the version number')
-  .option('-f, --format <type>', 'output format: "stylish", "plain" or "json"', 'stylish')
-  .action((filepath1, filepath2, options) => {
-    console.log(genDiff(filepath1, filepath2, options.format));
-  });
-
-program.parse()
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'output format', 'stylish') // Дефолтный формат – 4 параметр
+  .action((path1, path2) => { // Код вызова внутри action
+    // Вывод на экран происходит здесь, а не внутри библиотеки
+    console.log(genDiff(path1, path2, program.opts().format))
+  })
+  .parse(process.argv)
