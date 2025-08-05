@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
+import { program } from 'commander'
 import genDiff from '../src/index.js';
 
 program
@@ -12,3 +12,4 @@ program
     console.log(genDiff(path1, path2, program.opts().format))
   })
   .parse(process.argv)
+
