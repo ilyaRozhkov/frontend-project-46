@@ -1,28 +1,17 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { fileURLToPath } from 'url';
-import path from 'path';
-import gendiff from '../src/index.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import genDiff from '../src/index.js';
 
 const program = new Command();
 
 program
-  .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
-  .version('0.0.1')
+  .helpOption('-h, --help', 'output usage information')
   .arguments('<filepath1> <filepath2>')
-  .option('-f, --format [type]', 'output format')
-  .action((filepath1, filepath2) => {
-    console.log(gendiff(filepath1, filepath2));
+  .option('-V, --version', 'output the version number')
+  .option('-f, --format <type>', 'output format: "stylish", "plain" or "json"', 'stylish')
+  .action((filepath1, filepath2, options) => {
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
-// Добавьте проверку на прямой запуск файла
-if (process.argv[1] === __filename) {
-  program.parse(process.argv);
-} else {
-  // Для совместимости с тестами
-  export default gendiff;
-}
+program.parse()
