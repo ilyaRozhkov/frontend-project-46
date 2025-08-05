@@ -1,15 +1,28 @@
 #!/usr/bin/env node
-import { program } from 'commander'
-import genDiff from '../src/index.js';
+import { Command } from 'commander';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import gendiff from '../src/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const program = new Command();
 
 program
+  .name('gendiff')
+  .description('Compares two configuration files and shows a difference.')
   .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
-  .description('Compares two configuration files and shows a difference.')
-  .option('-f, --format [type]', 'output format', 'stylish') // Дефолтный формат – 4 параметр
-  .action((path1, path2) => { // Код вызова внутри action
-    // Вывод на экран происходит здесь, а не внутри библиотеки
-    console.log(genDiff(path1, path2, program.opts().format))
-  })
-  .parse(process.argv)
+  .option('-f, --format [type]', 'output format')
+  .action((filepath1, filepath2) => {
+    console.log(gendiff(filepath1, filepath2));
+  });
 
+// Добавьте проверку на прямой запуск файла
+if (process.argv[1] === __filename) {
+  program.parse(process.argv);
+} else {
+  // Для совместимости с тестами
+  export default gendiff;
+}
