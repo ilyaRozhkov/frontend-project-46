@@ -3,7 +3,6 @@ import plain from './plain.js';
 import json from './json.js';
 
 function changeFormatter(obj1, obj2, formatName) {
-  console.log('!', formatName)
   switch (formatName) {
     case 'plain':
       return plain(obj1, obj2);
@@ -17,4 +16,5 @@ function changeFormatter(obj1, obj2, formatName) {
 }
 
 export default changeFormatter;
+
 
