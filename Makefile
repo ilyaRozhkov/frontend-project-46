@@ -1,14 +1,23 @@
-install-deps:
+install: # The first cloning of the project
 	npm ci
 
-publish:
-	npm publish --dry-run
-
-lint:
+lint: # Launching the linter
 	npx eslint .
 
-test:
-	npx jest
+test: # Testing CI
+	npm run test:ci
 
-test-coverage:
-	npx jest --coverage
+test-watch: # Testing local
+	npm run test:watch
+
+link: # Launching the npm-package
+	npm link
+
+publish: # Updating packages
+	npm publish --dry-run
+
+fix: # Massive Fix
+	npx eslint . --fix
+
+gendiff: # Calling the utility
+	node bin/gendiff.js
