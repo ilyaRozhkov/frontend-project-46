@@ -1,4 +1,4 @@
-import diffStylish from './stylish.js';
+import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 
@@ -9,12 +9,10 @@ function changeFormatter(obj1, obj2, formatName) {
     case 'json':
       return JSON.stringify(json(obj1, obj2));
     case 'stylish':
-      return diffStylish(obj1, obj2);
+      return stylish(obj1, obj2);
     default:
       throw new Error(`Uncorrect format ${formatName}!`);
   }
 }
 
 export default changeFormatter;
-
-
