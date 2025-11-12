@@ -1,0 +1,35 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/Athos627/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Athos627/frontend-project-46/actions)",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athos627/frontend-project-46.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Athos627/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/Athos627/frontend-project-46#readme",
+  "dependencies": {
+    "commander": "^14.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "^1.10.0",
+    "@eslint/js": "^9.38.0",
+    "@stylistic/eslint-plugin": "^5.5.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "jest": "^30.2.0"
+  }
+}
